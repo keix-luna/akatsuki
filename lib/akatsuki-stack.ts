@@ -35,5 +35,21 @@ export class AkatsukiStack extends Stack {
       resources: ['arn:aws:ssm:ap-northeast-1:275819092422:parameter/keix/api-key/gemini'],
     }));
 
+    const tsukiKage = new lambda.Function(
+      this, 'TsukiKage', {
+        runtime: lambda.Runtime.NODEJS_20_X,
+        handler: 'app.handler',
+        functionName: 'TsukiKage',
+        code: lambda.Code.fromAsset('lambdas/tsukikage'),
+        layers: [akatsukiLayer],
+        timeout: cdk.Duration.seconds(29),
+      }
+    );
+
+    tsukiKage.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['ssm:GetParameter'],
+      resources: ['arn:aws:ssm:ap-northeast-1:275819092422:parameter/keix/api-key/openai'],
+    }));
+
   }
 }
