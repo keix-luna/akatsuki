@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
-    "aws-sdk": "^2.1671.0"
+    "aws-sdk": "^2.1671.0",
+    "openai": "^4.55.4"
   }
 }
