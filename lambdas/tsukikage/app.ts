@@ -39,8 +39,7 @@ export const handler =
     return {
       statusCode: 200,
       body: JSON.stringify({
-        project: 'Akatsuki',
-        engine: 'GPT-4',
+        model: 'GPT-4',
         function: 'TsukiKage',
         text: text,
         version: 'v1',
