@@ -37,8 +37,7 @@ export const handler =
     return {
       statusCode: 200,
       body: JSON.stringify({
-        project: 'Akatsuki',
-        engine: 'Gemini',
+        model: 'Gemini',
         function: 'SetsuGetsuKa',
         text: text,
         version: 'v1',
