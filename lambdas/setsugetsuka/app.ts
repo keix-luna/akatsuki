@@ -29,7 +29,7 @@ export const handler =
     const genAI = await createGenAIInstance();
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt = "The response about the foods in Thailand and the words is limit 200 in Japanese.";
+    const prompt = "The response about the foods in Thailand is limited to 200 words in Japanese.";
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = await response.text();
