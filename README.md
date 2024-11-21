@@ -2,6 +2,15 @@
 This is the source code for the infrastructure built using AWS CDK, which supports the 9th.tokyo and Seven-Swords projects.
 The name is Akatsuki a.k.a MoonLight.
 
+## Usage
+To deploy this stack, run the following commands:
+
+```bash
+npm install
+npm run build
+cdk deploy
+```
+
 ## APIs
 
 Including the following functions. Each lambda function is implemented in a verbose manner, but their integration remains loosely coupled.

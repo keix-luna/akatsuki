@@ -31,17 +31,15 @@ export const handler =
     const openai = await createGenAIInstance();
     const chatCompletion = await openai.chat.completions.create({
       messages: [{ role: "user", content: message }],
-      model: "gpt-4",
+      model: "gpt-4o-mini",
     });
-
-    const text = await chatCompletion.choices[0].message;
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        model: 'GPT-4',
+        model: 'GPT-4p-mini',
         function: 'TsukiKage',
-        text: text,
+        text: chatCompletion.choices[0].message,
         version: 'v1',
       }), 
     } 
