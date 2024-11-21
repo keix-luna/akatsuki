@@ -51,5 +51,32 @@ export class AkatsukiStack extends Stack {
       resources: ['arn:aws:ssm:ap-northeast-1:275819092422:parameter/keix/api-key/openai'],
     }));
 
+    const tsukiYo = new lambda.Function(
+      this, 'TsukiYo', {
+        runtime: lambda.Runtime.NODEJS_20_X,
+        handler: 'app.handler',
+        functionName: 'TsukiYo',
+        code: lambda.Code.fromAsset('lambdas/tsukiyo'),
+        layers: [akatsukiLayer],
+        timeout: cdk.Duration.seconds(29),
+      }
+    );
+
+    tsukiKage.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['ssm:GetParameter'],
+      resources: ['arn:aws:ssm:ap-northeast-1:275819092422:parameter/keix/api-key/claude'],
+    }));
+
+
+    const gekko = new lambda.Function(
+      this, 'Gekko', {
+        runtime: lambda.Runtime.NODEJS_20_X,
+        handler: 'app.handler',
+        functionName: 'Gekko',
+        code: lambda.Code.fromAsset('lambdas/gekko'),
+        layers: [akatsukiLayer],
+        timeout: cdk.Duration.seconds(29),
+      }
+    );
   }
 }
